@@ -15,12 +15,14 @@ const Tip = (nv) => {
 export default class PicCard extends PureComponent{
   render() {
     const nv = this.props.nv;
+    const goMm = () => this.props.picClick && this.props.picClick(nv.userId);
     return (
       <div className="pic-card-div">
         <Card
           hoverable
           bordered
-          cover={<img className="pic-card" alt={nv.realName} src={nv.avatarUrl}/>}
+          width={240}
+          cover={<img className="pic-card" alt={nv.realName}  onClick={goMm}   src={nv.avatarUrl}/>}
         >
           <Meta title={nv.realName}  description={Tip(nv)}
           />

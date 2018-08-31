@@ -5,3 +5,7 @@ html, body, :global(#root) {
 body {
   background: #ffc0cb1f !important;
 }
+
+:global(.ant-layout-content) {
+  background: #ffc0cb1f !important;
+}

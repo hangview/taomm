@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
 import { Layout, Pagination } from 'antd';
 import './IndexPage.css';
 import PicCard from "../components/PicCard";
@@ -7,7 +8,8 @@ const { Header, Content } = Layout;
 
 
 @connect (state => ({
-  list: state.nv.list
+  list: state.nv.list,
+  currentPage: state.nv.currentPage
 }))
 
 export default class IndexPage extends PureComponent {
@@ -22,29 +24,41 @@ export default class IndexPage extends PureComponent {
   }
 
   componentDidMount(){
-    this.fetchData(1);
+    this.fetchData(this.props.currentPage);
   }
   onPageChange(current){
-    this.fetchData(current);
+    if(current) {
+      this.props.dispatch({
+        type: 'nv/changePage',
+        payload: {
+          page: current
+        }
+      })
+      this.fetchData(current);
+    }
+  }
+  goMM(userId){
+    this.props.dispatch(routerRedux.push(`/mm/${userId}`));
   }
 
   render(){
     let lists = this.props.list;
     let List = !(lists instanceof Array && lists.length >0)?'...':(
-        lists.map(user => <PicCard key={user.userId} nv={user} />)
+        lists.map(user => <PicCard key={user.userId} picClick={(userId)=>this.goMM(userId) } nv={user} />)
       );
     return (
       <div>
-        <Header>
-          <h1 className="header">TaoMM</h1>
-        </Header>
-        <Content>
-            <div className="index-page">
-              <Pagination showQuickJumper onChange={(current) => this.onPageChange(current)} defaultCurrent={1} total={17295} pageSize={50} />
-            </div>
-            {List}
-        </Content>
-
+        <Layout>
+            <Header>
+              <h1 className="header">TaoMM</h1>
+            </Header>
+            <Content>
+                <div className="index-page">
+                  <Pagination showQuickJumper  current={this.props.currentPage} onChange={(current) => this.onPageChange(current)} defaultCurrent={this.props.currentPage} total={17295} pageSize={50} />
+                </div>
+                {List}
+            </Content>
+        </Layout>
       </div>
     )
   }
