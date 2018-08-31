@@ -9,3 +9,8 @@ body {
 :global(.ant-layout-content) {
   background: #ffc0cb1f !important;
 }
+
+:global(.ant-layout-sider) {
+  width: 240px !important;
+  background: #ffc0cb1f !important;
+}

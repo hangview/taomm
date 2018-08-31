@@ -39,7 +39,7 @@ export default class MmPage extends PureComponent {
             <Layout>
               <Sider>{MM}</Sider>
               <Content>
-                {mm&&mm.imgList.length>0?
+                {mm&&mm.imgList&&mm.imgList.length>0?
                   mm.imgList.map(url => (<img src={url} />)):''}
               </Content>
             </Layout>
