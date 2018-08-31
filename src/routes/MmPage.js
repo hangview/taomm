@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
-import { Layout, Pagination, Card, Avatar } from 'antd';
+import { Layout, Pagination, Card, Avatar, Divider } from 'antd';
 import './IndexPage.css';
 const { Header, Content , Sider} = Layout;
 
@@ -56,6 +56,7 @@ export default class MmPage extends PureComponent {
             <Card className="mm-detail-pic">
                 {mm&&mm.imgList&&mm.imgList.length>0? mm.imgList.map(url => (<img key={url} src={url} />)):''}
             </Card>
+          <Divider>Bottom</Divider>
         </Layout>
 
       </div>

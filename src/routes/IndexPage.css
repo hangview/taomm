@@ -9,7 +9,6 @@
 
 :global(.pic-card) {
   width: 240px;
-  height: 320px;
 }
 
 :global(.index-page) {
