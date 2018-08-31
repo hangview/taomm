@@ -1,9 +1,8 @@
 import React, {PureComponent} from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
-import { Layout, Pagination } from 'antd';
+import { Layout, Pagination, Card, Avatar } from 'antd';
 import './IndexPage.css';
-import PicCard from "../components/PicCard";
 const { Header, Content , Sider} = Layout;
 
 
@@ -28,21 +27,35 @@ export default class MmPage extends PureComponent {
 
   render(){
     let mm = this.props.mm;
-    let MM = !mm?'...':(<PicCard key={mm.userId}  nv={mm} />);
+    if(mm && mm.imgList instanceof  Array && mm.imgList.length >0){
+      if(mm.cardUrl){
+        mm.imgList = [mm.cardUrl,...mm.imgList];
+      }
+    }
 
     return (
-      <div>
+      <div id="mmPage">
         <Layout>
             <Header>
               <h1 className="header">TaoMM</h1>
             </Header>
-            <Layout>
-              <Sider>{MM}</Sider>
-              <Content>
-                {mm&&mm.imgList&&mm.imgList.length>0?
-                  mm.imgList.map(url => (<img src={url} />)):''}
-              </Content>
-            </Layout>
+            <Card>
+              {mm?
+                <div className="mm-title">
+                  <Avatar src={mm.avatarUrl} size="large"/>
+                  <h2>{mm.realName}</h2>
+                  <p>城市: {mm.city}</p>
+                  <p>类型: {mm.type}</p>
+                  <p>身高: {mm.height}</p>
+                  <p>体重: {mm.weight}</p>
+                  <p>关注: {mm.totalFanNum}</p>
+                </div>
+                :''
+              }
+            </Card>
+            <Card className="mm-detail-pic">
+                {mm&&mm.imgList&&mm.imgList.length>0? mm.imgList.map(url => (<img key={url} src={url} />)):''}
+            </Card>
         </Layout>
 
       </div>

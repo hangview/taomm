@@ -14,3 +14,6 @@ body {
   width: 240px !important;
   background: #ffc0cb1f !important;
 }
+:global(.ant-layout-content) {
+  overflow-x:scroll !important;
+}

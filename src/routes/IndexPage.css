@@ -1,3 +1,7 @@
+/*:global(#mmPage){*/
+  /*background: #ffc0cb1f !important;*/
+/*}*/
+
 :global(.header) {
   color: pink;
   border-bottom: 1px solid pink;
@@ -11,4 +15,22 @@
 :global(.index-page) {
   text-align: center;
   margin: 20px 0 10px 0;
+}
+
+:global(.mm-title) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+:global(.mm-title h2){
+  margin-top: 10px;
+}
+
+:global(.mm-title p) {
+  margin-left:10px;
+  margin-top: 20px;
+}
+
+:global(.mm-detail-pic img){
+  width: 100%;
 }
