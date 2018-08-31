@@ -1,0 +1,14 @@
+:global(.header) {
+  color: pink;
+  border-bottom: 1px solid pink;
+}
+
+:global(.pic-card) {
+  width: 240px;
+  height: 320px;
+}
+
+:global(.index-page) {
+  text-align: center;
+  margin: 20px 0 10px 0;
+}

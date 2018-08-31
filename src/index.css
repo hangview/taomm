@@ -1,0 +1,7 @@
+
+html, body, :global(#root) {
+  height: 100%;
+}
+body {
+  background: #ffc0cb1f !important;
+}
