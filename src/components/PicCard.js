@@ -6,8 +6,13 @@ const { Meta } = Card;
 const Tip = (nv) => {
   return (
     <div className="pic-card-tip">
-      <p>类型：{nv.type}  关注：{nv.totalFanNum}</p>
-      <p>身高：{nv.height}  体重：{nv.weight}</p>
+      {window.IS_MOBILE?(<div>
+          <p>类型：{nv.type}</p><p>关注：{nv.totalFanNum}</p>
+          <p>身高：{nv.height}</p> <p> 体重：{nv.weight}</p></div>)
+        :(<div>
+          <p>类型：{nv.type}  关注：{nv.totalFanNum}</p>
+          <p>身高：{nv.height}  体重：{nv.weight}</p>
+        </div>)}
     </div>
   )
 }
@@ -17,7 +22,7 @@ export default class PicCard extends PureComponent{
     const nv = this.props.nv;
     const goMm = () => this.props.picClick && this.props.picClick(nv.userId);
     const wStyle = {
-      width:window.IS_MOBILE?180:240
+      width:window.IS_MOBILE?160:240
     };
     const hStyle = {
       height:window.IS_MOBILE?240:320
