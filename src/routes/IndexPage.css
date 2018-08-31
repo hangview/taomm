@@ -2,10 +2,6 @@
   /*background: #ffc0cb1f !important;*/
 /*}*/
 
-:global(.header) {
-  color: pink;
-  border-bottom: 1px solid pink;
-}
 
 :global(.pic-card) {
   width: 240px;

@@ -32,18 +32,17 @@ export default class MmPage extends PureComponent {
         mm.imgList = [mm.cardUrl,...mm.imgList];
       }
     }
-    const style = {
+    const layStyle = {
       "flexDirection":window.IS_MOBILE?"column":"row",
+    };
+    const wStyle = {
+      width:'100%'
     }
     return (
       <div id="mmPage">
-        <Layout>
-            <Header>
-              <h1 className="header">TaoMM</h1>
-            </Header>
             <Card>
               {mm?
-                <div className="mm-title" style={style}>
+                <div className="mm-title" style={layStyle}>
                   <Avatar src={mm.avatarUrl} size="large"/>
                   <h2>{mm.realName}</h2>
                   <p>城市: {mm.city}</p>
@@ -56,11 +55,9 @@ export default class MmPage extends PureComponent {
               }
             </Card>
             <Card className="mm-detail-pic">
-                {mm&&mm.imgList&&mm.imgList.length>0? mm.imgList.map(url => (<img key={url} src={url} />)):''}
+                {mm&&mm.imgList&&mm.imgList.length>0? mm.imgList.map(url => (<img style={window.IS_MOBILE?wStyle:{}} key={url} src={url} />)):''}
             </Card>
           <Divider>Bottom</Divider>
-        </Layout>
-
       </div>
     )
   }

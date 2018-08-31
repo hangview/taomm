@@ -17,3 +17,19 @@ body {
 :global(.ant-layout-content) {
   overflow-x:scroll !important;
 }
+
+:global(.main-header h1){
+  display: inline-block !important;
+  cursor: pointer;
+}
+
+:global(.header) {
+  color: pink;
+  border-bottom: 1px solid pink;
+}
+
+:global(.main-header h3){
+  color: pink;
+  margin-top: 10px;
+  cursor: pointer;
+}
