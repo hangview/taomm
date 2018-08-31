@@ -22,11 +22,12 @@ export default class PicCard extends PureComponent{
     const nv = this.props.nv;
     const goMm = () => this.props.picClick && this.props.picClick(nv.userId);
     const wStyle = {
-      width:window.IS_MOBILE?160:240
+      width:window.IS_MOBILE?160:180
     };
-    const hStyle = {
-      height:window.IS_MOBILE?240:320
+    let hStyle = {
+      height:window.IS_MOBILE?220:240
     }
+    if(window.IS_MOBILE) hStyle.width = "100%";
     return (
       <div className="pic-card-div" style={wStyle}>
         <Card
