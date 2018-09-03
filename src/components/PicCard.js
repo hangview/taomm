@@ -33,6 +33,7 @@ export default class PicCard extends PureComponent{
         <Card
           hoverable
           bordered
+          style={{background:nv.hasImg?'white':'darkgrey'}}
           cover={<img style={hStyle} className="pic-card" alt={nv.realName}  onClick={goMm}   src={nv.avatarUrl}/>}
         >
           <Meta title={nv.realName}  description={Tip(nv)}
